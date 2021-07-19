@@ -1,10 +1,17 @@
 var garden,rabbit;
 var gardenImg,rabbitImg;
+var apple,appleImg
+var leaves,leavesImg
 
 function preload()
 {
   gardenImg = loadImage("garden.png");
   rabbitImg = loadImage("rabbit.png");
+  appleImg = loadImage("apple.png");
+  leavesImg = loadImage("leaf.png");
+  grassImg = loadImage("grass.png");
+  redLeavesImg = loadImage("redImage.png");
+  orangeLeavesImg = loadImage("orangeLeaf.png");
 }
 
 function setup()
@@ -30,17 +37,27 @@ function draw()
   edges= createEdgeSprites();
   rabbit.collide(edges);
 
-  var select_sprites = math.round(random(1,2));
+  var select_sprites = Math.round(random(1,4));
   if (frameCount % 80 == 0)
   {
-    if (select_sprite == 1)
+    if (select_sprites == 1)
     {
       createApples();
+    }
+    else if(select_sprites == 2)
+    {
+      createLeavesRed();
+    }
+    else if(select_sprites == 3)
+    {
+      createLeavesOrange();
     }
     else
     {
       createLeaves();
     }
+    
+    
   }
 
 
@@ -52,8 +69,8 @@ function draw()
 function createApples()
 {
   apple = createSprite(random(50,350),40,10,10);
-  apple.addImage(apple.png);
-  apple.velocityY = -3
+  apple.addImage(appleImg);
+  apple.velocityY = 3
   apple.lifetime = 125;
   apple.scale = 0.1;
 }
@@ -61,8 +78,27 @@ function createApples()
 function createLeaves()
 {
   leaves = createSprite(random(60,320),40,10,10);
-  leaves.addImage(leaf.png);
-  leaves.velocityY = -3;
+  leaves.addImage(leavesImg);
+  leaves.velocityY = 3;
   leaves.lifetime = 125;
   leaves.scale = 0.1;
 }
+
+function createLeavesRed()
+{
+  leavesRed = createSprite(random(60,320),40,10,10);
+  leavesRed.addImage(redLeavesImg);
+  leavesRed.velocityY = 3;
+  leavesRed.lifetime = 125;
+  leavesRed.scale = 0.1;
+}
+
+function createLeavesOrange()
+{
+  leavesOrange = createSprite(random(60,320),40,10,10);
+  leavesOrange.addImage(orangeLeavesImg);
+  leavesOrange.velocityY = 3;
+  leavesOrange.lifetime = 125;
+  leavesOrange.scale = 0.1;
+}
+
